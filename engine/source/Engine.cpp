@@ -1,11 +1,38 @@
 #include "Engine.h"
 #include "Application.h"
+#include "GL/glew.h"
+#include "GLFW/glfw3.h"
+#include <iostream>
 
 namespace eng {
-    bool Engine::init() {
+    bool Engine::init(int w, int h) {
         if (!m_application) {
             return false;
         }
+
+        if (!glfwInit()) {
+            return false;
+        }
+
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+        m_window = glfwCreateWindow(w, h, "Game", nullptr, nullptr);
+
+        if (m_window == nullptr) {
+            std::cout << "Failed to create GLFW window." << std::endl;
+            glfwTerminate();
+            return false;
+        }
+
+        glfwMakeContextCurrent(m_window);
+
+        if (glewInit() != GLEW_OK) {
+            glfwTerminate();
+            return false;
+        }
+
         return m_application->init();
     }
 
@@ -15,12 +42,16 @@ namespace eng {
         }
 
         m_lastTimePoint = std::chrono::steady_clock::now();
-        while (!m_application->needsToBeClosed()) {
+        while (!glfwWindowShouldClose(m_window) && !m_application->needsToBeClosed()) {
+            glfwPollEvents();
+
             auto now = std::chrono::steady_clock::now();
             float deltaTime = std::chrono::duration<float>(now - m_lastTimePoint).count();
             m_lastTimePoint = now;
 
             m_application->update(deltaTime);
+
+            glfwSwapBuffers(m_window);
         }
     }
 
@@ -28,6 +59,9 @@ namespace eng {
         if (m_application) {
             m_application->destroy();
             m_application.reset();
+
+            glfwTerminate();
+            m_window = nullptr;
         }
     }
 
