@@ -1,0 +1,13 @@
+//
+// Created by Sameer on 26/06/16.
+//
+
+#ifndef GAMEDEVELOPMENTPROJECT_ENGINE_H
+#define GAMEDEVELOPMENTPROJECT_ENGINE_H
+
+
+class Engine {
+};
+
+
+#endif //GAMEDEVELOPMENTPROJECT_ENGINE_H

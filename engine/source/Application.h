@@ -1,0 +1,13 @@
+//
+// Created by Sameer on 26/06/16.
+//
+
+#ifndef GAMEDEVELOPMENTPROJECT_APPLICATION_H
+#define GAMEDEVELOPMENTPROJECT_APPLICATION_H
+
+
+class Application {
+};
+
+
+#endif //GAMEDEVELOPMENTPROJECT_APPLICATION_H
