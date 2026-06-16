@@ -7,6 +7,7 @@ set(PROJECT_SOURCE_FILES
         source/Engine.cpp
         source/Application.h
         source/Application.cpp
+        source/eng.h
 )
 
 include_directories(source)

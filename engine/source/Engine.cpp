@@ -14,9 +14,9 @@ namespace eng {
             return;
         }
 
-        m_lastTimePoint = std::chrono::high_resolution_clock::now();
+        m_lastTimePoint = std::chrono::steady_clock::now();
         while (!m_application->needsToBeClosed()) {
-            auto now = std::chrono::high_resolution_clock::now();
+            auto now = std::chrono::steady_clock::now();
             float deltaTime = std::chrono::duration<float>(now - m_lastTimePoint).count();
             m_lastTimePoint = now;
 
