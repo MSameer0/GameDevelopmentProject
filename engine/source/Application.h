@@ -1,13 +1,14 @@
-//
-// Created by Sameer on 26/06/16.
-//
+#pragma once
 
-#ifndef GAMEDEVELOPMENTPROJECT_APPLICATION_H
-#define GAMEDEVELOPMENTPROJECT_APPLICATION_H
+namespace eng {
+    class Application {
+        bool m_needsToBeClosed = false;
+    public:
+        virtual bool init() = 0;
+        virtual void update(float deltaTime) = 0;   //deltaTime is in seconds
+        virtual void destroy() = 0;
 
-
-class Application {
-};
-
-
-#endif //GAMEDEVELOPMENTPROJECT_APPLICATION_H
+        void setNeedsToBeClosed(bool value);
+        bool needsToBeClosed() const;
+    };
+}

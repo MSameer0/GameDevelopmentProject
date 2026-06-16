@@ -1,13 +1,18 @@
-//
-// Created by Sameer on 26/06/16.
-//
+#pragma once
+#include <memory>
+#include <chrono>
 
-#ifndef GAMEDEVELOPMENTPROJECT_ENGINE_H
-#define GAMEDEVELOPMENTPROJECT_ENGINE_H
+namespace eng {
+    class Application;
+    class Engine {
+        std::unique_ptr<Application> m_application;
+        std::chrono::steady_clock::time_point m_lastTimePoint;
+    public:
+        bool init();
+        void run();
+        void destroy();
 
-
-class Engine {
-};
-
-
-#endif //GAMEDEVELOPMENTPROJECT_ENGINE_H
+        void setApplication(Application* app);
+        Application* getApplication();
+    };
+}

@@ -1,5 +1,11 @@
-//
-// Created by Sameer on 26/06/16.
-//
-
 #include "Application.h"
+
+namespace eng {
+    void Application::setNeedsToBeClosed(bool value) {
+        m_needsToBeClosed = value;
+    }
+
+    bool Application::needsToBeClosed() const {
+        return m_needsToBeClosed;
+    }
+}
