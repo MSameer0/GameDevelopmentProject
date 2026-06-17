@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include <chrono>
+#include "input/InputManager.h"
 
 struct GLFWwindow;
 namespace eng {
@@ -9,12 +10,24 @@ namespace eng {
         GLFWwindow* m_window = nullptr;
         std::unique_ptr<Application> m_application;
         std::chrono::steady_clock::time_point m_lastTimePoint;
+
+        InputManager m_inputManager;
+
+        Engine() = default;
+        Engine(const Engine&) = delete;
+        Engine(Engine&&) = delete;
+        Engine& operator=(const Engine&) = delete;
+        Engine& operator=(Engine&&) = delete;
     public:
+        static Engine& getInstance();
+
         bool init(int w, int h);
         void run();
         void destroy();
 
         void setApplication(Application* app);
         Application* getApplication();
+
+        InputManager& getInputManager();
     };
 }

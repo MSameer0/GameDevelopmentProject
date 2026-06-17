@@ -3,7 +3,7 @@
 
 int main() {
     Game* game  = new Game();
-    eng::Engine engine;
+    eng::Engine& engine = eng::Engine::getInstance();
 
     engine.setApplication(game);
 
