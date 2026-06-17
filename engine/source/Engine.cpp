@@ -92,4 +92,8 @@ namespace eng {
     InputManager& Engine::getInputManager() {
         return m_inputManager;
     }
+
+    GraphicsAPI& Engine::getGraphicsAPI() {
+        return m_graphicsAPI;
+    }
 }

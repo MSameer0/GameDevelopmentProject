@@ -1,6 +1,8 @@
 #pragma once
 #include <memory>
 #include <chrono>
+
+#include "graphics/GraphicsAPI.h"
 #include "input/InputManager.h"
 
 struct GLFWwindow;
@@ -12,6 +14,7 @@ namespace eng {
         std::chrono::steady_clock::time_point m_lastTimePoint;
 
         InputManager m_inputManager;
+        GraphicsAPI m_graphicsAPI;
 
         Engine() = default;
         Engine(const Engine&) = delete;
@@ -29,5 +32,6 @@ namespace eng {
         Application* getApplication();
 
         InputManager& getInputManager();
+        GraphicsAPI& getGraphicsAPI();
     };
 }
