@@ -6,6 +6,7 @@
 
 #include "ShaderProgram.h"
 #include "GL/glew.h"
+#include "../render/Material.h"
 
 namespace eng {
     std::shared_ptr<ShaderProgram> GraphicsAPI::createShaderProgram(const std::string &vertexSource,
@@ -60,6 +61,14 @@ namespace eng {
     }
 
     void GraphicsAPI::bindShaderProgram(ShaderProgram *shaderProgram) {
-        shaderProgram->bind();
+        if (shaderProgram) {
+            shaderProgram->bind();
+        }
+    }
+
+    void GraphicsAPI::bindMaterial(Material *material) {
+        if (material) {
+            material->bind();
+        }
     }
 }
