@@ -7,6 +7,7 @@
 #include "ShaderProgram.h"
 #include "GL/glew.h"
 #include "../render/Material.h"
+#include "render/Mesh.h"
 
 namespace eng {
     std::shared_ptr<ShaderProgram> GraphicsAPI::createShaderProgram(const std::string &vertexSource,
@@ -89,6 +90,18 @@ namespace eng {
     void GraphicsAPI::bindMaterial(Material *material) {
         if (material) {
             material->bind();
+        }
+    }
+
+    void GraphicsAPI::bindMesh(Mesh *mesh) {
+        if (mesh) {
+            mesh->bind();
+        }
+    }
+
+    void GraphicsAPI::drawMesh(Mesh *mesh) {
+        if (mesh) {
+            mesh->draw();
         }
     }
 }
