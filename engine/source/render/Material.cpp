@@ -10,6 +10,10 @@ namespace eng {
         m_floatParams[name] = value;
     }
 
+    void Material::setParam(const std::string &name, float v0, float v1) {
+        m_float2Params[name] = {v0, v1};
+    }
+
     void Material::bind() {
         if (!m_shaderProgram) {
             return;
@@ -19,6 +23,10 @@ namespace eng {
 
         for (const auto& param : m_floatParams) {
             m_shaderProgram->setUniform(param.first, param.second);
+        }
+
+        for (auto& param : m_float2Params) {
+            m_shaderProgram->setUniform(param.first, param.second.first, param.second.second);
         }
     }
 }

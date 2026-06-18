@@ -18,5 +18,6 @@ namespace eng {
         void bind();
         GLint getUniformLocation(const std::string& name);
         void setUniform(const std::string& name, float value);
+        void setUniform(const std::string& name, float v0, float v1);
     };
 }
