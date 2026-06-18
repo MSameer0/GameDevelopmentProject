@@ -67,6 +67,11 @@ namespace eng {
 
             m_application->update(deltaTime);
 
+            m_graphicsAPI.setClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+            m_graphicsAPI.clearBuffers();
+
+            m_renderQueue.draw(m_graphicsAPI);
+
             glfwSwapBuffers(m_window);
         }
     }
@@ -95,5 +100,9 @@ namespace eng {
 
     GraphicsAPI& Engine::getGraphicsAPI() {
         return m_graphicsAPI;
+    }
+
+    RenderQueue &Engine::getRenderQueue() {
+        return m_renderQueue;
     }
 }

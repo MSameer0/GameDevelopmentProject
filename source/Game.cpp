@@ -75,6 +75,13 @@ void Game::update(float deltaTime) {
     if (input.isKeyPressed(GLFW_KEY_A)) {
         std::cout << "[A] button is pressed" << std::endl;
     }
+
+    eng::RenderCommand command;
+    command.material = &m_material;
+    command.mesh = m_mesh.get();
+
+    auto& renderQueue = eng::Engine::getInstance().getRenderQueue();
+    renderQueue.submit(command);
 }
 
 void Game::destroy() {

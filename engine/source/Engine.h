@@ -4,6 +4,7 @@
 
 #include "graphics/GraphicsAPI.h"
 #include "input/InputManager.h"
+#include "render/RenderQueue.h"
 
 struct GLFWwindow;
 namespace eng {
@@ -15,6 +16,8 @@ namespace eng {
 
         InputManager m_inputManager;
         GraphicsAPI m_graphicsAPI;
+
+        RenderQueue m_renderQueue;
 
         Engine() = default;
         Engine(const Engine&) = delete;
@@ -33,5 +36,7 @@ namespace eng {
 
         InputManager& getInputManager();
         GraphicsAPI& getGraphicsAPI();
+
+        RenderQueue& getRenderQueue();
     };
 }
