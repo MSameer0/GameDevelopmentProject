@@ -1,5 +1,8 @@
 #pragma once
 #include <memory>
+#include <vector>
+
+#include "GL/glew.h"
 
 namespace eng {
     class ShaderProgram;
@@ -8,6 +11,9 @@ namespace eng {
     public:
         std::shared_ptr<ShaderProgram> createShaderProgram(const std::string& vertexSource,
             const std::string& fragmentSource);
+        GLuint createVertexBuffer(const std::vector<float>& vertices);
+        GLuint createIndexBuffer(const std::vector<uint32_t>& indices);
+
         void bindShaderProgram(ShaderProgram* shaderProgram);
         void bindMaterial(Material* material);
     };
